@@ -1,0 +1,54 @@
+@import url('https://fonts.googleapis.com/css2?family=Poetsen+One&display=swap');
+
+.pokemon-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 16px;
+  padding: 16px;
+}
+
+.pokemon-card {
+  position: relative;
+  background-color: #c5c6b1;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(15, 15, 242, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s, box-shadow 0.3s;
+  cursor: pointer;
+  text-align: center;
+  padding: 16px;
+  color: var(--text-color);
+
+  img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    margin-bottom: 8px;
+  }
+
+  .pokemon-name {
+    font-family: 'Poetsen One', sans-serif;
+    font-size: 16px;
+    color: black;
+  }
+
+  &:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 16px rgb(1, 221, 250);
+    background-color: var(--secondary-color);
+  }
+
+  .favorite-icon {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+  }
+}
+
+.custom-background{
+  background-image: url(/src/assets/image/background-image.jpg);
+}
+

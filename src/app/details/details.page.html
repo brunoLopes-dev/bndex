@@ -1,0 +1,52 @@
+<ion-header>
+  <ion-toolbar>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content *ngIf="pokemonDetails && pokemonSpecies">
+  <div class="details-container">
+    <div class="pokemon-image-container">
+      <ion-button fill="clear" class="arrow-button" (click)="navigateToPrevious()">
+        <ion-icon slot="icon-only" name="arrow-back-circle-outline"></ion-icon>
+      </ion-button>
+      <div class="pokemon-image">
+        <img src="assets/icon/card-back.png" alt="Pokeball background" class="pokeball-background">
+        <img [src]="pokemonDetails.sprites.front_default" alt="{{ pokemonDetails.name }}" class="pokemon-sprite">
+      </div>
+      <ion-button fill="clear" class="arrow-button" (click)="navigateToNext()">
+        <ion-icon slot="icon-only" name="arrow-forward-circle-outline"></ion-icon>
+      </ion-button>
+    </div>
+    <div class="pokemon-info">
+      <div class="pokemon-types">
+        <span *ngFor="let type of pokemonDetails.types" class="pokemon-type">{{ type.type.name | capitalize }}</span>
+      </div>
+      <ion-card class="pokemon-stats-card">
+        <ion-card-header class="custom-title">
+          {{ pokemonDetails?.name | capitalize }} N° {{ pokemonDetails.id }}
+        </ion-card-header>
+        <ion-card-content>
+          <div class="details-columns">
+            <div class="details-column">
+              <p><strong>Height:</strong> {{ pokemonDetails.height / 10 }} m</p>
+              <p><strong>Weight:</strong> {{ pokemonDetails.weight / 10 }} kg</p>
+              <p><strong>Base Experience:</strong> {{ pokemonDetails.base_experience }}</p>
+              <p><strong>Habitat:</strong> {{ pokemonSpecies.habitat?.name | capitalize }}</p>
+              <p><strong>Shape:</strong> {{ pokemonSpecies.shape?.name | capitalize }}</p>
+            </div>
+            <div class="details-column">
+              <p><strong>Abilities:</strong></p>
+              <ul>
+                <li *ngFor="let ability of pokemonDetails.abilities">{{ ability.ability.name | capitalize }}</li>
+              </ul>
+              <p><strong>Color:</strong> {{ pokemonSpecies.color?.name | capitalize }}</p>
+              <p><strong>Capture Rate:</strong> {{ pokemonSpecies.capture_rate }}</p>
+              <p><strong>Base Happiness:</strong> {{ pokemonSpecies.base_happiness }}</p>
+            </div>
+          </div>
+        </ion-card-content>
+      </ion-card>
+    </div>
+    <ion-button expand="full" (click)="goHome()">Home</ion-button>
+  </div>
+</ion-content>

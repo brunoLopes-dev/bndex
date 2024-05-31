@@ -1,20 +1,47 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import axios from 'axios';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PokemonService {
-  private apiUrl = 'https://pokeapi.co/api/v2';
 
-  constructor(private http: HttpClient) {}
+  private baseUrl: string = 'https://pokeapi.co/api/v2';
 
-  public getPokemons(limit: number = 20, offset: number = 0) {
-    return this.http.get(`${this.apiUrl}/pokemon?limit=${limit}&offset=${offset}`);
+  constructor() { }
+
+  async getPokemonList(offset: number = 0, limit: number = 151): Promise<any> {
+    try {
+      const response = await axios.get(`${this.baseUrl}/pokemon`, {
+        params: {
+          offset: offset,
+          limit: limit
+        }
+      });
+      return response.data;
+    } catch (error) {
+      console.error('Error fetching Pokémon list:', error);
+      throw error;
+    }
   }
 
-  public getPokemonDetail(id: string) {
-    return this.http.get(`${this.apiUrl}/pokemon/${id}`);
+  async getPokemonDetails(name: string): Promise<any> {
+    try {
+      const response = await axios.get(`${this.baseUrl}/pokemon/${name}`);
+      return response.data;
+    } catch (error) {
+      console.error('Error fetching Pokémon details:', error);
+      throw error;
+    }
+  }
+
+  async getPokemonSpecies(name: string): Promise<any> {
+    try {
+      const response = await axios.get(`${this.baseUrl}/pokemon-species/${name}`);
+      return response.data;
+    } catch (error) {
+      console.error('Error fetching Pokémon species:', error);
+      throw error;
+    }
   }
 }
-
