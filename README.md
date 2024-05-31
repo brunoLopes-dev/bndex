@@ -75,10 +75,6 @@ A aplicação foi construída com foco na modularidade e reutilização de compo
 
 [Veja o vídeo do projeto](https://youtu.be/DibHSCKwIjs)
 
-Ou você pode assistir ao vídeo incorporado abaixo:
-
-<iframe width="560" height="315" src="https://youtu.be/DibHSCKwIjs" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
 ## Contribuição
 
 Contribuições são bem-vindas! Sinta-se à vontade para abrir issues ou pull requests.
